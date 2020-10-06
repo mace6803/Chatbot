@@ -12,7 +12,7 @@ var io = require('socket.io')(server);*/
 
 //Weather API//
 
-var apiKey = 'a3a6af680d13aa8f8a7b1e4ee070aef7';
+var apiKey = '';
 var result
 
 function cb (err, response, body) {
