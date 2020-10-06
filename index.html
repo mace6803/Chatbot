@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<HTML>
+   <HEAD>
+        <meta charset="utf-8"/>
+      <TITLE>GET WEATHER</TITLE>
+   </HEAD>
+   <BODY>
+      <h3>GET WEATHER</h3>
+      <p></p>
+      <script>
+
+        function cb (err, response, body) {
+            if(err) {
+                console.log('error', error);
+            }
+            
+            var weather = JSON.parse(body)
+            if (weather.message === 'city not found') {
+                result = 'Unable to get weather ' + weather.message;
+            }
+            else {
+                result = 'Right not its ' + weather.main.temp + ' degrees with ' + weather.weather[0].description;
+            }
+        }
+
+        function getWeather(city) {
+            
+            var cit = 'Milan';
+            var apiKey = 'a3a6af680d13aa8f8a7b1e4ee070aef7';
+            result = undefined;
+            var url = 'https://api.openweathermap.org/data/2.5/weather?q=${'+$cit+'}&units=imperial&appid=${'+apiKey+'}';
+            var req = request(url, cb);
+
+            return result;
+        }
+      </script>
+   </BODY>
+</HTML>
