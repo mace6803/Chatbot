@@ -9,6 +9,15 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);*/
 
 //WEBHOOK//
+applicationCache.post('/webhook', function (req, res){
+
+    console.log('received a post request');
+    if(!req.body) return res.sendStatus(400)
+    res.setHeader('Content-Type', 'application/json');
+    console.log('here is the post request from DialogFLow');
+    console.log(req.body);
+
+})
 
 //Weather API//
 
