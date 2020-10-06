@@ -16,6 +16,7 @@ applicationCache.post('/webhook', function (req, res){
     res.setHeader('Content-Type', 'application/json');
     console.log('here is the post request from DialogFLow');
     console.log(req.body);
+    console.log('Got geo city weather from DialogFlow'+ req.body.queryResult.parameters['geo.city']);
 
 })
 
