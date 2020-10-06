@@ -20,16 +20,6 @@ app.post('/webhook', function (req, res){
 
 })
 
-applicationCache.post('/webhook', function (req, res){
-
-    console.log('received a post request');
-    if(!req.body) return res.sendStatus(400)
-    res.setHeader('Content-Type', 'application/json');
-    console.log('here is the post request from DialogFLow');
-    console.log(req.body);
-
-})
-
 //Weather API//
 
 var apiKey = '';
@@ -51,7 +41,7 @@ function cb (err, response, body) {
 
 function getWeather(city) {
     result = undefined;
-    var url = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}';
+    var url = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}';
     var req = request(url, cb);
     while(result === undefined) {
         require('deasync').runLoopOnce();
