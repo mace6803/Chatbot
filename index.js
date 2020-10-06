@@ -10,6 +10,16 @@ var io = require('socket.io')(server);*/
 
 //WEBHOOK//
 
+applicationCache.post('/webhook', function (req, res){
+
+    console.log('received a post request');
+    if(!req.body) return res.sendStatus(400)
+    res.setHeader('Content-Type', 'application/json');
+    console.log('here is the post request from DialogFLow');
+    console.log(req.body);
+
+})
+
 //Weather API//
 
 var apiKey = 'a3a6af680d13aa8f8a7b1e4ee070aef7';
@@ -31,7 +41,7 @@ function cb (err, response, body) {
 
 function getWeather(city) {
     result = undefined;
-    var url = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}';
+    var url = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}';
     var req = request(url, cb);
     while(result === undefined) {
         require('deasync').runLoopOnce();
